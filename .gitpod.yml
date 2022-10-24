@@ -2,4 +2,4 @@ image: gitpod/workspace-full-vnc
 
 tasks:
  - name: opening
-   init: sh .config/copyDisplay.sh
+   command: xrandr --output VNC-0 --mode 800x600
