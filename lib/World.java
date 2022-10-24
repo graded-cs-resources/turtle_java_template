@@ -18,9 +18,6 @@ public class World extends JComponent implements ModelDisplay
   /** should automatically repaint when model changed */
   private boolean autoRepaint = true;
   
-  /** the background color for the world */
-  private Color background = Color.white;
-  
   /** the width of the world */
   private int width = 640;
   
@@ -134,7 +131,7 @@ public class World extends JComponent implements ModelDisplay
     g.drawImage(picture.getImage(),0,0,null);
     
     // loop drawing each turtle on the background image
-    Iterator iterator = turtleList.iterator();
+    Iterator<Turtle> iterator = turtleList.iterator();
     while (iterator.hasNext())
     {
       turtle = (Turtle) iterator.next();
@@ -238,14 +235,14 @@ public class World extends JComponent implements ModelDisplay
    * Method to get the list of turtles in the world
    * @return a list of turtles in the world
    */
-  public List getTurtleList() 
+  public List<Turtle> getTurtleList() 
   { return turtleList;}
   
   /**
    * Method to get an iterator on the list of turtles
    * @return an iterator for the list of turtles
    */
-  public Iterator getTurtleIterator()
+  public Iterator<Turtle> getTurtleIterator()
   { return turtleList.iterator();}
   
   /**

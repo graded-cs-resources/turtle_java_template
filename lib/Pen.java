@@ -136,7 +136,7 @@ public class Pen
     Color oldcolor = g.getColor();
 
     // loop through path segment list and
-    Iterator iterator = pathSegmentList.iterator();
+    Iterator<PathSegment> iterator = pathSegmentList.iterator();
     PathSegment pathSeg = null;
     
     // loop through path segments

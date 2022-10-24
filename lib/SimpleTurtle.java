@@ -174,8 +174,6 @@ public class SimpleTurtle
     double dx = x - this.xPos;
     double dy = y - this.yPos;
     double arcTan = 0.0;
-    double angle = 0.0;
-    
     // avoid a divide by 0
     if (dx == 0)
     {
