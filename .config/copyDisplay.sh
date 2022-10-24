@@ -1,0 +1,1 @@
+cp displays.xml ~/.config/xfce4/xfconf/xfce-perchannel-xml
