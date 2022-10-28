@@ -68,8 +68,11 @@ public class SimpleTurtle
   /** the name of this turtle */
   private String name = "No name";
   
+  /** The wait time between moves in ms- larger number means slower turtle! */
+  private int waitTime = 500;
   ////////////////// constructors ///////////////////
-  
+
+
   /**
    * Constructor that takes the x and y position for the
    * turtle
@@ -458,6 +461,23 @@ public class SimpleTurtle
     // set the visibile flag to the passed value
     this.visible = value;
   }
+    
+  /**
+   * Return the wait time between updates for this turtle, in ms.
+   * @return
+   */
+  public int getWaitTime() {
+    return waitTime;
+  }
+
+  /**
+   * Set the wait time between updates, in ms. Bigger number, slower moves!
+   * Default value is 500 ms.
+   * @param waitTime
+   */
+public void setWaitTime(int waitTime) {
+    this.waitTime = waitTime;
+  }
   
   /**
    * Method to update the display of this turtle and
@@ -465,6 +485,11 @@ public class SimpleTurtle
    */
   public synchronized void updateDisplay()
   {
+    //wait first
+    try {
+      wait((long)waitTime);
+    } catch (InterruptedException e) {
+    }
     // check that x and y are at least 0
     if (xPos < 0)
       xPos = 0;

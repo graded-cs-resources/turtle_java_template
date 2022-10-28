@@ -5,13 +5,21 @@ import java.awt.*;
 public class Main {
   public static void main(String[] args) {  
     World world = new World(400,400);
+
     Turtle yertle = new Turtle(world);
-    // Add your own code in here 
-    yertle.setColor(Color.green);
+    Turtle myrtle = new Turtle(300, 300, world); 
+    world.setVisible(true);
+
+    yertle.setWaitTime(1000); // slow yertle down
+    yertle.setColor(Color.red); //make him red
+    
     yertle.forward();
     yertle.turnRight();
     yertle.forward();
-    
-    world.setVisible(true);
+   
+    myrtle.forward();
+    myrtle.turnLeft();
+    myrtle.forward();
+
   }
 }
