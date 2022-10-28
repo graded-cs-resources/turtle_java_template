@@ -15,6 +15,6 @@ Teachers can select this as starter code for a Github Classroom assignment. Unfo
 
 ## How to load it once you have it
 
-You can open it locally using the git tools built into VS Code or other IDEs such as eclipse, or with Github desktop. This will require you to have a functional java installation.
+You can open it locally using the git tools built into VS Code or other IDEs such as eclipse or netbeans, or with Github desktop. This will require you to have a functional java installation.
 
 Alternatively, you can open it using [GitPod](https://gitpod.io). A Gitpod configuration file is included that will let it open correctly with desktop support and everything.
