@@ -39,10 +39,10 @@ public class SimpleTurtle
   private int height = 18;
   
   /** current location in x (center) */
-  private int xPos = 0;
+  private double xPos = 0;
   
   /** current location in y (center) */
-  private int yPos = 0;
+  private double yPos = 0;
   
   /** heading angle */
   private double heading = 0;  // default is facing north
@@ -79,7 +79,7 @@ public class SimpleTurtle
    * @param x the x pos
    * @param y the y pos
    */
-  public SimpleTurtle(int x, int y)
+  public SimpleTurtle(double x, double y)
   {
     xPos = x;
     yPos = y;
@@ -95,7 +95,7 @@ public class SimpleTurtle
    * @param y the y pos
    * @param display the model display
    */
-  public SimpleTurtle(int x, int y, ModelDisplay display)
+  public SimpleTurtle(double x, double y, ModelDisplay display)
   {
     this(x,y); // invoke constructor that takes x and y
     modelDisplay = display;
@@ -110,8 +110,8 @@ public class SimpleTurtle
   public SimpleTurtle(ModelDisplay display)
   {
     // invoke constructor that takes x and y
-    this((int) (display.getWidth() / 2), 
-         (int) (display.getHeight() / 2));
+    this((display.getWidth() / 2), 
+         (display.getHeight() / 2));
     modelDisplay = display;
     display.addModel(this);
 
@@ -124,7 +124,7 @@ public class SimpleTurtle
    * @param y the y pos
    * @param picture the picture to draw on
    */
-  public SimpleTurtle(int x, int y, Picture picture)
+  public SimpleTurtle(double x, double y, Picture picture)
   {
     this(x,y); // invoke constructor that takes x and y
     this.picture = picture;
@@ -139,8 +139,8 @@ public class SimpleTurtle
   public SimpleTurtle(Picture picture)
   {
     // invoke constructor that takes x and y
-    this((int) (picture.getWidth() / 2),
-         (int) (picture.getHeight() / 2));
+    this((picture.getWidth() / 2),
+         (picture.getHeight() / 2));
     this.picture = picture;
     this.visible = false; // default is not to see the turtle
   }
@@ -152,10 +152,10 @@ public class SimpleTurtle
    * @param x the x location
    * @param y the y location
    */
-  public double getDistance(int x, int y)
+  public double getDistance(double x, double y)
   {
-    int xDiff = x - xPos;
-    int yDiff = y - yPos;
+    double xDiff = x - xPos;
+    double yDiff = y - yPos;
     return (Math.sqrt((xDiff * xDiff) + (yDiff * yDiff)));
   }
   
@@ -172,7 +172,7 @@ public class SimpleTurtle
    * @param x the x to turn towards
    * @param y the y to turn towards
    */
-  public void turnToFace(int x, int y)
+  public void turnToFace(double x, double y)
   {
     double dx = x - this.xPos;
     double dy = y - this.yPos;
@@ -322,13 +322,13 @@ public class SimpleTurtle
    * Method to get the current x position
    * @return the x position (in pixels)
    */
-  public int getXPos() { return this.xPos; }
+  public double getXPos() { return this.xPos; }
   
   /**
    * Method to get the current y position
    * @return the y position (in pixels)
    */
-  public int getYPos() { return this.yPos; }
+  public double getYPos() { return this.yPos; }
   
   /**
    * Method to get the pen
@@ -525,14 +525,14 @@ public void setWaitTime(int waitTime) {
    * Method to move the turtle forward the given number of pixels 
    * @param pixels the number of pixels to walk forward in the heading direction
    */
-  public void forward(int pixels)
+  public void forward(double pixels)
   {
-    int oldX = xPos;
-    int oldY = yPos;
+    double oldX = xPos;
+    double oldY = yPos;
     
     // change the current position
-    xPos = oldX + (int) (pixels * Math.sin(Math.toRadians(heading)));
-    yPos = oldY + (int) (pixels * -Math.cos(Math.toRadians(heading)));
+    xPos = oldX + (pixels * Math.sin(Math.toRadians(heading)));
+    yPos = oldY + (pixels * -Math.cos(Math.toRadians(heading)));
     
     // add a move from the old position to the new position to the pen
     pen.addMove(oldX,oldY,xPos,yPos);
@@ -553,7 +553,7 @@ public void setWaitTime(int waitTime) {
    * Method to go backward a given number of pixels
    * @param pixels the number of pixels to walk backward
    */
-  public void backward(int pixels)
+  public void backward(double pixels)
   {
     forward(-pixels);
   }
@@ -624,7 +624,7 @@ public void setWaitTime(int waitTime) {
       g2.rotate(Math.toRadians(heading),xPos,yPos);
       
       // draw the passed picture
-      g2.drawImage(dropPicture.getImage(),xPos,yPos,null);
+      g2.drawImage(dropPicture.getImage(),(int)xPos,(int)yPos,null);
       
       // reset the tranformation matrix
       g2.setTransform(oldTransform);
@@ -661,27 +661,27 @@ public void setWaitTime(int waitTime) {
       
       // draw the body parts (head)
       g2.setColor(bodyColor);
-      g2.fillOval(xPos - quarterWidth,
-                  yPos - halfHeight - (int) (height/3), 
+      g2.fillOval((int)xPos - quarterWidth,
+                  (int)yPos - halfHeight - (int) (height/3), 
                   halfWidth, thirdHeight);
-      g2.fillOval(xPos - (2 * thirdWidth),
-                  yPos - thirdHeight,
+      g2.fillOval((int)xPos - (2 * thirdWidth),
+                  (int)yPos - thirdHeight,
                   thirdWidth,thirdHeight);
-      g2.fillOval(xPos - (int) (1.6 * thirdWidth),
-                  yPos + thirdHeight,
+      g2.fillOval((int)xPos - (int) (1.6 * thirdWidth),
+                  (int)yPos + thirdHeight,
                   thirdWidth,thirdHeight);
-      g2.fillOval(xPos + (int) (1.3 * thirdWidth),
-                  yPos - thirdHeight,
+      g2.fillOval((int)xPos + (int) (1.3 * thirdWidth),
+                  (int)yPos - thirdHeight,
                   thirdWidth,thirdHeight);
-      g2.fillOval(xPos + (int) (0.9 * thirdWidth),
-                  yPos + thirdHeight,
+      g2.fillOval((int)xPos + (int) (0.9 * thirdWidth),
+                  (int)yPos + thirdHeight,
                   thirdWidth,thirdHeight);
                   
       
       // draw the shell
       g2.setColor(getShellColor());
-      g2.fillOval(xPos - halfWidth,
-                  yPos - halfHeight, width, height);
+      g2.fillOval((int)xPos - halfWidth,
+                  (int)yPos - halfHeight, width, height);
       
       // draw the info string if the flag is true
       if (showInfo)
@@ -702,7 +702,7 @@ public void setWaitTime(int waitTime) {
   public synchronized void drawInfoString(Graphics g) 
   {
     g.setColor(infoColor);
-    g.drawString(this.toString(),xPos + (int) (width/2),yPos);
+    g.drawString(this.toString(),(int)(xPos + (width/2)),(int)yPos);
   }
   
   /**

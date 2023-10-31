@@ -16,32 +16,31 @@ public class Turtle extends SimpleTurtle
    * @param y the starting y position
    * @param picture the picture to draw on
    */
-  public Turtle (int x, int y, Picture picture) 
+  public Turtle (double x, double y, Picture picture) 
   {
     // let the parent constructor handle it
     super(x,y,picture);
   }
   
-  /** Constructor that takes the x and y and a model
-   * display to draw it on
+  /** Constructor that takes the x and y and a world to draw it on
    * @param x the starting x position
    * @param y the starting y position
-   * @param modelDisplayer the thing that displays the model
+   * @param modelDisplayer the "world" the turtle lives in
    */
-  public Turtle (int x, int y, 
-                 ModelDisplay modelDisplayer) 
+  public Turtle (double x, double y, 
+                 World world) 
   {
     // let the parent constructor handle it
-    super(x,y,modelDisplayer);
+    super(x,y,world);
   }
   
   /** Constructor that takes the model display
-   * @param modelDisplay the thing that displays the model
+   * @param world the World the turtle lives in
    */
-  public Turtle (ModelDisplay modelDisplay) 
+  public Turtle (World world) 
   {
     // let the parent constructor handle it
-    super(modelDisplay);
+    super(world);
   }
   
   /**
@@ -56,12 +55,5 @@ public class Turtle extends SimpleTurtle
   
   /////////////////// methods ///////////////////////
 
-
-  public static void main(String[] args)
-  {
-    World earth = new World();
-    Turtle t1 = new Turtle(earth);
-    t1.forward();
-  }
 
 } // this } is the end of class Turtle, put all new methods before this

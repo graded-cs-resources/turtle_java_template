@@ -107,13 +107,13 @@ public class Pen
    * @param x2 the second x
    * @param y2 the second y
    */
-  public synchronized void addMove(int x1, int y1, int x2, int y2)
+  public synchronized void addMove(double x1, double y1, double x2, double y2)
   {
     if (penDown)
     {
       PathSegment pathSeg = 
         new PathSegment(this.color,this.width,
-                        new Line2D.Float(x1,y1,x2,y2));
+                        new Line2D.Float((float)x1,(float)y1,(float)x2,(float)y2));
       pathSegmentList.add(pathSeg);
     }
   }
